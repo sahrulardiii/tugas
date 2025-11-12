@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Pengaduan</title>
+</head>
+<body>
+    <h1>Daftar Pengaduan</h1>
+
+    {% if object_list %}
+        <ul>
+            {% for pengaduan in object_list %}
+                <li>
+                    <strong>{{ pengaduan.judul }}</strong>  
+                    (Pelapor: {{ pengaduan.pelapor.nama_lengkap }})  
+                    - Status: {{ pengaduan.status }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Tidak ada data pengaduan.</p>
+    {% endif %}
+</body>
+</html>
