@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if object %}Edit Warga{% else %}Tambah Warga Baru{% endif %}</title>
+</head>
+<body>
+    <h1>{% if object %}Edit Warga{% else %}Form Pendaftaran Warga Baru{% endif %}</h1>
+
+    <!-- Tampilkan pesan error jika form tidak valid -->
+    {% if form.errors %}
+        <div style="color: red;">
+            <p><strong>Terjadi kesalahan. Periksa kembali data Anda:</strong></p>
+            {{ form.errors }}
+        </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Simpan</button>
+        <a href="{% url 'warga-list' %}">Batal</a>
+    </form>
+
+    <p>
+        <a href="{% url 'warga-list' %}">← Kembali ke Daftar Warga</a>
+    </p>
+</body>
+</html>
